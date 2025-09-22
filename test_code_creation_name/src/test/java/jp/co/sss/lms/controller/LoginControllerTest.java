@@ -57,6 +57,10 @@ class LoginControllerTest {
 
 	}
 
+	/**
+	 * テストケース01
+	 * ログイン画面に遷移
+	 */
 	@Test
 	void testIndex() throws IOException {
 		// 指定のURLの画面を開く

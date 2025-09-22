@@ -10,6 +10,8 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -58,14 +60,20 @@ class LoginControllerTest {
 	}
 
 	/**
-	 * テストケース01
-	 * ログイン画面に遷移
+	 * テストケース02
+	 * ログイン画面でユーザー、パスワードを入力
 	 */
 	@Test
 	void testIndex() throws IOException {
 		// 指定のURLの画面を開く
 		chromeDriver.get(
 				"http://localhost:8080/lms/");
+
+		//ケース02 START
+		// ユーザー,パスワードを入力し、Enterキーを押下する
+		chromeDriver.findElement(By.name("loginId")).sendKeys("user");
+		chromeDriver.findElement(By.name("password")).sendKeys("StudentAA02", Keys.ENTER);
+		//ケース02 FINISH
 
 		File file = ((TakesScreenshot) chromeDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
